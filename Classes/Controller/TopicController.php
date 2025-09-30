@@ -241,7 +241,7 @@ class TopicController extends AbstractController
         }
 
         if ($topic instanceof Topic) {
-            $this->session->registerObject($topic, $topic->getUid());
+            $this->session->registerObject($topic, (string)$topic->getUid());
         }
     }
 
