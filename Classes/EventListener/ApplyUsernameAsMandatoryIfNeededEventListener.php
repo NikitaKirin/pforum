@@ -43,8 +43,7 @@ class ApplyUsernameAsMandatoryIfNeededEventListener extends AbstractControllerEv
         if (
             $this->isValidRequest($controllerActionEvent)
             && ($controllerActionEvent->getSettings()['usernameIsMandatory'] ?? false)
-            && ($validatorResolver = $this->objectManager->get(ValidatorResolver::class))
-            && ($notEmptyValidator = $validatorResolver->createValidator(NotEmptyValidator::class))
+            && ($notEmptyValidator = $this->validatorResolver->createValidator(NotEmptyValidator::class))
             && $notEmptyValidator instanceof NotEmptyValidator
             && ($argumentName = $this->getArgumentName($controllerActionEvent))
         ) {
